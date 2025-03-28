@@ -104,6 +104,15 @@
         .toggle-button:hover {
             transform: scale(1.1);
         }
+
+        /* About Me Section */
+        .about-me {
+            font-size: 18px;
+            color: var(--secondary-text-color);
+            margin-top: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -146,13 +155,22 @@
         <button id="toggle-mode" class="toggle-button">🌙</button>
     </div>
 
-    <h1>Hello there, I'm Spencer. Nice to meet you.</h1>
-  
+    <h1>Hi there, Spencer here :)</h1>
+
+    <!-- About Me Section -->
+    <div class="about-me">
+        <p>
+            I'm currently a Y1 student at Nanyang Technological University. <br>
+            In my free time, I enjoy reading books and delving deep into how and why things work in detail. <br>
+            I think it's amazing how people have made new discoveries and I aim to discover/invent something someday. <br>
+            Feel free to check out my GitHub profile for my latest projects!
+        </p>
+    </div>
+
     <a href="https://github.com/Spenz7" target="_blank" class="github-link">
         <span>GitHub Profile</span>
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
     </a>
-    <p>Currently tinkering with Google Maps APIs</p>
     
     <p class="last-updated" id="last-updated"></p>
 </body>
