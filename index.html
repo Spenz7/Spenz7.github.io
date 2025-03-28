@@ -5,19 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Spencer's Website</title>
     <style>
+        :root {
+            --bg-color: #f0f0f0;
+            --text-color: #333;
+            --secondary-text-color: #666;
+            --last-updated-color: #777;
+            --button-bg: #333;
+            --button-text: #fff;
+        }
+        
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #fff;
+            --secondary-text-color: #bbb;
+            --last-updated-color: #999;
+            --button-bg: #fff;
+            --button-text: #333;
+        }
+
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
-            background-color: #f0f0f0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
         h1 {
-            color: #333;
             font-size: 36px;
         }
         p {
             font-size: 20px;
-            color: #666;
+            color: var(--secondary-text-color);
         }
         .github-link {
             margin-top: 20px;
@@ -26,7 +44,7 @@
             gap: 10px;
             text-decoration: none;
             font-size: 20px;
-            color: #333;
+            color: var(--text-color);
             font-weight: bold;
         }
         .github-icon {
@@ -36,27 +54,60 @@
         .last-updated {
             margin-top: 20px;
             font-size: 16px;
-            color: #777;
+            color: var(--last-updated-color);
+        }
+        .toggle-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
         }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Set last updated date
             const lastUpdated = new Date().toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
             });
             document.getElementById("last-updated").textContent = "Last updated: " + lastUpdated;
+
+            // Dark mode toggle logic
+            const toggleButton = document.getElementById("toggle-mode");
+            const body = document.body;
+
+            // Check for saved theme in localStorage
+            if (localStorage.getItem("darkMode") === "enabled") {
+                body.classList.add("dark-mode");
+            }
+
+            toggleButton.addEventListener("click", function() {
+                body.classList.toggle("dark-mode");
+                if (body.classList.contains("dark-mode")) {
+                    localStorage.setItem("darkMode", "enabled");
+                } else {
+                    localStorage.setItem("darkMode", "disabled");
+                }
+            });
         });
     </script>
 </head>
 <body>
     <h1>Welcome to Spencer's Website</h1>
     <p>Currently tinkering with Google Maps APIs</p>
+    
+    <button id="toggle-mode" class="toggle-button">Toggle Dark Mode</button>
+    
     <a href="https://github.com/Spenz7" target="_blank" class="github-link">
         <span>GitHub Profile</span>
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
     </a>
+    
     <p class="last-updated" id="last-updated"></p>
 </body>
 </html>
