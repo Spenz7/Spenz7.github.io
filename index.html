@@ -19,10 +19,37 @@
             font-size: 20px;
             color: #666;
         }
+        .github-link {
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .github-icon {
+            width: 40px;
+            height: 40px;
+        }
+        .last-updated {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #777;
+        }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const lastUpdated = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById("last-updated").textContent = "Last updated: " + lastUpdated;
+        });
+    </script>
 </head>
 <body>
     <h1>Welcome to Spencer's Website</h1>
-    <p>This is a simple webpage to greet visitors. Stay tuned for more updates!</p>
+    <p>Currently tinkering with Google Maps APIs</p>
+    <a href="https://github.com/Spenz7" target="_blank" class="github-link">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
+    </a>
+    <p class="last-updated" id="last-updated"></p>
 </body>
 </html>
