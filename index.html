@@ -10,6 +10,8 @@
             --text-color: #333;
             --secondary-text-color: #666;
             --last-updated-color: #777;
+            --button-bg: #ddd;
+            --button-text: #333;
         }
         
         .dark-mode {
@@ -17,6 +19,8 @@
             --text-color: #fff;
             --secondary-text-color: #bbb;
             --last-updated-color: #999;
+            --button-bg: #444;
+            --button-text: #fff;
         }
 
         body {
@@ -59,11 +63,37 @@
             color: var(--last-updated-color);
         }
 
-        /* Dark Mode Toggle Button */
-        .toggle-button {
+        /* Button Container */
+        .button-container {
             position: absolute;
             top: 20px;
             right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Books Button */
+        .books-button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .books-button:hover {
+            background-color: #bbb;
+        }
+
+        .dark-mode .books-button:hover {
+            background-color: #666;
+        }
+
+        /* Dark Mode Toggle Button */
+        .toggle-button {
             background: none;
             border: none;
             font-size: 24px;
@@ -109,15 +139,20 @@
     </script>
 </head>
 <body>
-    <button id="toggle-mode" class="toggle-button">🌙</button>
+    <div class="button-container">
+        <a href="books.html">
+            <button class="books-button">Books</button>
+        </a>
+        <button id="toggle-mode" class="toggle-button">🌙</button>
+    </div>
 
-    <h1>Welcome to Spencer's Website</h1>
-    <p>Currently tinkering with Google Maps APIs</p>
-    
+    <h1>Hello there, I'm Spencer. Nice to meet you.</h1>
+  
     <a href="https://github.com/Spenz7" target="_blank" class="github-link">
         <span>GitHub Profile</span>
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
     </a>
+    <p>Currently tinkering with Google Maps APIs</p>
     
     <p class="last-updated" id="last-updated"></p>
 </body>
