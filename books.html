@@ -19,11 +19,11 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(9, 1fr);
-            grid-template-rows: repeat(9, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
             gap: 10px;
             margin: 20px auto;
-            max-width: 900px;
+            max-width: 400px;
         }
 
         .grid-item {
@@ -34,15 +34,14 @@
             font-size: 16px;
             padding: 20px;
             border-radius: 5px;
-            height: 100px;
-            width: 100px;
+            height: 120px;
+            width: 120px;
         }
 
         /* Responsive for smaller screens */
-        @media (max-width: 900px) {
+        @media (max-width: 600px) {
             .grid-container {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: auto;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -50,9 +49,9 @@
 <body>
     <h1>Books Collection</h1>
     <div class="grid-container">
-        <!-- 81 Empty Grid Items -->
+        <!-- 9 Empty Grid Items -->
         <script>
-            for (let i = 0; i < 81; i++) {
+            for (let i = 0; i < 9; i++) {
                 document.write('<div class="grid-item">Book ' + (i + 1) + '</div>');
             }
         </script>
