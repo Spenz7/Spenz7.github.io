@@ -10,8 +10,6 @@
             --text-color: #333;
             --secondary-text-color: #666;
             --last-updated-color: #777;
-            --button-bg: #333;
-            --button-text: #fff;
         }
         
         .dark-mode {
@@ -19,8 +17,6 @@
             --text-color: #fff;
             --secondary-text-color: #bbb;
             --last-updated-color: #999;
-            --button-bg: #fff;
-            --button-text: #333;
         }
 
         body {
@@ -29,14 +25,18 @@
             padding: 50px;
             background-color: var(--bg-color);
             color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
         }
+
         h1 {
             font-size: 36px;
         }
+
         p {
             font-size: 20px;
             color: var(--secondary-text-color);
         }
+
         .github-link {
             margin-top: 20px;
             display: inline-flex;
@@ -47,29 +47,36 @@
             color: var(--text-color);
             font-weight: bold;
         }
+
         .github-icon {
             width: 40px;
             height: 40px;
         }
+
         .last-updated {
             margin-top: 20px;
             font-size: 16px;
             color: var(--last-updated-color);
         }
+
+        /* Dark Mode Toggle Button */
         .toggle-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
             border: none;
-            border-radius: 5px;
-            background-color: var(--button-bg);
-            color: var(--button-text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .toggle-button:hover {
+            transform: scale(1.1);
         }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Set last updated date
             const lastUpdated = new Date().toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
@@ -77,14 +84,17 @@
             });
             document.getElementById("last-updated").textContent = "Last updated: " + lastUpdated;
 
-            // Dark mode toggle logic
             const toggleButton = document.getElementById("toggle-mode");
             const body = document.body;
 
-            // Check for saved theme in localStorage
+            function updateIcon() {
+                toggleButton.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
+            }
+
             if (localStorage.getItem("darkMode") === "enabled") {
                 body.classList.add("dark-mode");
             }
+            updateIcon();
 
             toggleButton.addEventListener("click", function() {
                 body.classList.toggle("dark-mode");
@@ -93,15 +103,16 @@
                 } else {
                     localStorage.setItem("darkMode", "disabled");
                 }
+                updateIcon();
             });
         });
     </script>
 </head>
 <body>
+    <button id="toggle-mode" class="toggle-button">🌙</button>
+
     <h1>Welcome to Spencer's Website</h1>
     <p>Currently tinkering with Google Maps APIs</p>
-    
-    <button id="toggle-mode" class="toggle-button">Toggle Dark Mode</button>
     
     <a href="https://github.com/Spenz7" target="_blank" class="github-link">
         <span>GitHub Profile</span>
