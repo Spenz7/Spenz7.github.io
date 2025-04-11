@@ -117,38 +117,6 @@
             margin: 20px 0;
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const lastUpdated = new Date().toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            document.getElementById("last-updated").textContent = "Last updated: " + lastUpdated;
-
-            const toggleButton = document.getElementById("toggle-mode");
-            const body = document.body;
-
-            function updateIcon() {
-                toggleButton.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
-            }
-
-            if (localStorage.getItem("darkMode") === "enabled") {
-                body.classList.add("dark-mode");
-            }
-            updateIcon();
-
-            toggleButton.addEventListener("click", function() {
-                body.classList.toggle("dark-mode");
-                if (body.classList.contains("dark-mode")) {
-                    localStorage.setItem("darkMode", "enabled");
-                } else {
-                    localStorage.setItem("darkMode", "disabled");
-                }
-                updateIcon();
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="button-container">
@@ -176,7 +144,5 @@
     </a>
     
     
-    
-    <p class="last-updated" id="last-updated"></p>
 </body>
 </html>
