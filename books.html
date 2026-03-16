@@ -117,24 +117,27 @@ document.addEventListener("DOMContentLoaded", function() {
     const toggleButton = document.getElementById("toggle-mode");
     const body = document.body;
 
+    const savedMode = localStorage.getItem("theme");
+
+    if (savedMode === "dark") {
+        body.classList.add("dark-mode");
+    }
+
     function updateIcon() {
         toggleButton.textContent =
         body.classList.contains("dark-mode") ? "☀️" : "🌙";
     }
 
-    if (localStorage.getItem("darkMode") === "enabled") {
-        body.classList.add("dark-mode");
-    }
-
     updateIcon();
 
     toggleButton.addEventListener("click", function() {
+
         body.classList.toggle("dark-mode");
 
         if (body.classList.contains("dark-mode")) {
-            localStorage.setItem("darkMode","enabled");
+            localStorage.setItem("theme","dark");
         } else {
-            localStorage.setItem("darkMode","disabled");
+            localStorage.setItem("theme","light");
         }
 
         updateIcon();
@@ -175,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <a href="https://openlibrary.org/books/OL26709546M/Scorpia_Rising">
 <div class="book">
 <img src="https://covers.openlibrary.org/b/isbn/9780142419854-L.jpg">
-<p>Alex Rider: Eagle Strike</p>
+<p>Alex Rider: Scorpia Rising</p>
 </div>
 </a>
 
