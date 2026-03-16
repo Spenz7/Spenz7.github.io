@@ -174,17 +174,30 @@
     </div>
 
     <script>
-        const toggleButton = document.getElementById('toggle-mode');
-        const body = document.body;
-
-        toggleButton.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                toggleButton.textContent = '☀️';
-            } else {
-                toggleButton.textContent = '🌙';
-            }
-        });
+    const toggleButton = document.getElementById('toggle-mode');
+    const body = document.body;
+    
+    // apply saved mode on page load
+    const savedMode = localStorage.getItem('theme');
+    
+    if (savedMode === 'dark') {
+        body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️';
+    } else {
+        toggleButton.textContent = '🌙';
+    }
+    
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+    
+        if (body.classList.contains('dark-mode')) {
+            toggleButton.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            toggleButton.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        }
+    });
     </script>
 
 </body>
